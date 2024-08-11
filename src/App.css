@@ -25,7 +25,7 @@
     max-height: 100%;
     max-width: 100%;
     min-height: 45%;
-    min-width: 60%;
+    min-width: 70%;
     background-color: #ebebeb;
     border-radius: 12px;
     border: 3px solid #d8d8d8;
@@ -37,6 +37,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 45px;
+    overflow-y:scroll;
 }
 
 input {
@@ -48,21 +49,20 @@ input {
     font-weight: 400;
 }
 
-.first, .last, .phone, .email, .linked, .github {
+.form {
     display: flex;
     flex-direction: column;
     gap: 7px;
 }
 
-.names {
+.together {
     text-align: left;
     display: flex;
     flex-direction: row;
-    gap: 30px;
-    margin-bottom: 20px;
+    gap: 70px;
 }
 
-.phone, .email, .linked, .github {
+.form {
     text-align: left;
     margin-bottom: 20px;
 }
@@ -86,10 +86,16 @@ input {
 }
 
 .education {
-    background-color: black;
+    background-color: #38cb82;
     color: white;
-    padding: 15px;
+    padding: 10px;
+    border: none;
     border-radius: 15px;
     font-size: 20px;
     cursor: pointer;
+    width: 105%;
+}
+
+.education:hover {
+    background-color: #2eb774;
 }
