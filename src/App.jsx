@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+import Personal from './components/Personal.jsx';
+import Education from './components/Education.jsx';
 
 function App() {
   const [userInfo, setUserInfo] = useState({
@@ -11,13 +13,20 @@ function App() {
     githubLink: "github.com/jake",
   })
 
-  const [educationInfo, setEduInfo] = useState({
+  const [educations, setEducations] = useState([{
     degree: "Bachelor of Arts in Computer Science, Minor in Business",
     college: "Southwestern University",
     place: "Georgetown, TX",
     date: "May 2021",
+  }])
 
-  })
+  const [experiences, setExperiences] = useState([{
+    position: "Undergraduate Research Assistant",
+    employer: "Texas A&M University",
+    city: "College Station, TX",
+    startDate: "June 2020",
+    endDate: "Present",
+  }])
 
   const handleInfo = e => {
     const {id, value} = e.target;
@@ -26,13 +35,51 @@ function App() {
       [id]: value
     })
   }
-
-  const handleEducation = e => {
+  
+  const handleEducation = (e, i) => {
     const {id, value} = e.target;
-    setEduInfo({
-      ...educationInfo,
-      [id]: value
-    })
+    let newEducations = [...educations];
+    newEducations[i][id] = value;
+    setEducations(newEducations);
+  }
+
+  const handleAddEducation = () => {
+    setEducations([...educations, {
+      degree: "Bachelor of Arts in Computer Science, Minor in Business",
+      college: "Southwestern University",
+      place: "Georgetown, TX",
+      date: "May 2021",
+    }])
+  }
+
+  const handleDeleteEdu = (i) => {
+    let deleteEducations = [...educations];
+    deleteEducations.splice(i, 1);
+    setEducations(deleteEducations);
+  }
+
+  const handleExperiences = (e, i) => {
+    const {id, value} = e.target;
+    let newExperiences = [...experiences];
+    experiences[i][id] = value;
+    setExperiences(newExperiences);
+  }
+
+  const handleAddExperiences = () => {
+    setExperiences([...experiences, {
+      position: "Undergraduate Research Assistant",
+      employer: "Texas A&M University",
+      city: "College Station, TX",
+      startDate: "2020-06",
+      endDate: "Present",
+      description: "Developed a REST API using FastAPI and PostgreSQL to store data from learning management systems. Developed a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data. Explored ways to visualize GitHub collaboration in a classroom setting."
+    }])
+  }
+
+  const handleDeleteExp = (i) => {
+    let deleteExperiences = [...experiences];
+    deleteExperiences.splice(i, 1);
+    setExperiences(deleteExperiences);
   }
 
   return (
@@ -40,76 +87,69 @@ function App() {
       <div className="side">
           <div className="header">CV Application</div>
           <div className="box">
-            <div className="title">Personal Details</div>
-            <form>
-              <div className="together">
+            <Personal handleInfo = {handleInfo}/>
+            <Education educations={educations} handleAddEducation = {handleAddEducation} handleDeleteEdu = {handleDeleteEdu} handleEducation = {handleEducation}/>
+
+            <div className="title">Experience</div>
+            {experiences.map((e, i) => (
+              <div className="boxed" key = {i}>
+              <form>
+
+                <button className="remove" onClick={() => handleDeleteExp(i)}>Remove Experience</button>
                 <div className="form">
-                  <label htmlFor="firstName">First Name</label>
-                  <input type="text" id="firstName" placeholder="Jake" onChange={handleInfo}></input>
+                  <label htmlFor="position">Position Title</label>
+                  <input type="text" id="position" placeholder="Undergraduate Research Assistant" onChange={e => handleExperiences(e, i)}></input>
+                </div>
+
+                <div className="together2">
+                  <div className="form">
+                    <label htmlFor="employer">Company Name</label>
+                    <input type="text" id="employer" placeholder="Texas A&M University" onChange={e => handleExperiences(e, i)}></input>
+                  </div>
+
+                  <div className="form">
+                    <label htmlFor="city">City Name</label>
+                    <input type="text" id="city" placeholder="College Station, TX" onChange={e => handleExperiences(e, i)}></input>
+                  </div>
+                </div>
+
+                <div className="together2">
+                  <div className="form">
+                    <label htmlFor="startDate">Start Date</label>
+                    <input type="text" id="startDate" placeholder="June 2020" onChange={e => handleExperiences(e, i)}></input>
+                  </div>
+
+                  <div className="form">
+                    <label htmlFor="endDate">End Date</label>
+                    <input type="text" id="endDate" placeholder="Present"onChange={e => handleExperiences(e, i)}></input>
+                  </div>
                 </div>
 
                 <div className="form">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input type="text" id="lastName" placeholder="Ryan" onChange={handleInfo}></input>
+                    <label htmlFor="task">Job Responsibilities</label>
+                    <div className="tasks">
+                    <input type="text" id="task" placeholder="Developed sum" onChange={e => handleExperiences(e, i)}></input>
+                    <button className="delete">X</button>
+                  </div>
                 </div>
-              </div>
 
-              <div className="form">
-                <label htmlFor="phoneNum">Phone Number</label>
-                  <input type="text" id="phoneNum" placeholder="123-456-7890" onChange={handleInfo}></input>
+                <button className="job">Add Responsibility</button>
+              </form>
               </div>
+            ))}
 
-              <div className="form">
-                <label htmlFor="emailAdd">Email Address</label>
-                  <input type="text" id="emailAdd" placeholder="jake@su.edu" onChange={handleInfo}></input>
-              </div>
-
-              <div className="form">
-                <label htmlFor="linkedIn">LinkedIn</label>
-                  <input type="text" id="linkedIn" placeholder="linkedin.com/in/jake" onChange={handleInfo}></input>
-              </div>
-
-              <div className="form">
-                <label htmlFor="githubLink">Github</label>
-                  <input type="text" id="githubLink" placeholder="github.com/jake" onChange={handleInfo}></input>
-              </div>
-            </form>
-
-            <div className="title">Education</div>
-
-            <form>
-              <div className="form">
-                <label htmlFor="degree">Degree Name</label>
-                <input type="text" id="degree" placeholder="Bachelor of Arts in Computer Science, Minor in Business" onChange={handleEducation}></input>
-              </div>
-
-              <div className="form">
-                <label htmlFor="college">School Name</label>
-                <input type="text" id="college" placeholder="Southwestern University" onChange={handleEducation}></input>
-              </div>
-
-              <div className="together">
-              <div className="form">
-                <label htmlFor="place">City Name</label>
-                <input type="text" id="place" placeholder="Georgetown, TX" onChange={handleEducation}></input>
-              </div>
-
-              <div className="form">
-                <label htmlFor="date">Graduation Date</label>
-                <input type="text" id="date" placeholder="May 2021" onChange={handleEducation}></input>
-              </div>
-              </div>
-            </form>
-
-            <button className="education">Add Education</button>
+            <div className="centered">
+              <button className="add">Add Experience</button>
+            </div>
           </div>
       </div>
 
       <div className="other">
           <div className="paper">
             <div>{userInfo.firstName}, {userInfo.lastName}, {userInfo.phoneNum}, {userInfo.emailAdd}, {userInfo.linkedIn}, {userInfo.githubLink}</div>
-          {educationInfo.degree}, {educationInfo.college}, {educationInfo.place}, {educationInfo.date}
           </div>
+
+          <button className="export">Export to PDF</button>
       </div>
     </>
   )

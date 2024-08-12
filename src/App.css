@@ -38,6 +38,10 @@
     padding-bottom: 10px;
     padding-right: 45px;
     overflow-y:scroll;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
 }
 
 input {
@@ -55,11 +59,15 @@ input {
     gap: 7px;
 }
 
-.together {
+.together, .together2 {
     text-align: left;
     display: flex;
     flex-direction: row;
-    gap: 70px;
+    gap: 110px;
+}
+
+.together2 {
+    gap: 125px;
 }
 
 .form {
@@ -75,27 +83,103 @@ input {
 .title {
     font-weight: 300;
     font-size: 35px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .paper {
     display: flex;
-    min-height: 100%;
-    min-width: 100%;
+    min-height: 90%;
+    min-width: 90%;
     background-color: white;
+    margin-bottom: 20px;
+    margin-top: 25px;
 }
 
-.education {
-    background-color: #38cb82;
+.add, .remove, .job, .export {
     color: white;
-    padding: 10px;
+    padding: 5px;
     border: none;
-    border-radius: 15px;
+    border-radius: 4px;
     font-size: 20px;
+    font-weight: 300;
     cursor: pointer;
-    width: 105%;
+    width: 40%;
+    margin-bottom: 20px;
 }
 
-.education:hover {
-    background-color: #2eb774;
+.add, .export {
+    background-color: #333333;
+}
+
+.remove {
+    background-color: #ef4444;
+}
+
+.remove:hover {
+    background-color: #d41212;
+}
+
+.add:hover, .export:hover {
+    background-color: black;
+}
+
+.delete {
+    background-color: #6366f1;
+    color: white;
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: 300;
+    border: none;
+    cursor: pointer;
+}
+
+.job {
+    background-color: #363187;
+}
+
+.delete:hover {
+    background-color: #4447ee;
+}
+
+.job:hover {
+    background-color: #2a2669;
+}
+.tasks {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 104%;
+}
+
+.boxed {
+    background-color: rgb(228, 228, 231);
+    margin-bottom: 15px;
+    width: 95%;
+    margin-left: 3px;
+    padding-right: 40px;
+    padding-left: 10px;
+    padding-top: 15px;
+    border-radius: 6px;
+    border: 2px solid rgb(212, 212, 216);
+}
+
+#firstName, #lastName {
+    width: 125%;
+}
+
+#startDate, #endDate, #employer, #city, #place, #date {
+    width: 115%;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.export {
+    color: white;
+    width: 25%;
+    font-weight: 400;
 }
