@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-import Personal from './components/Personal.jsx';
-import Education from './components/Education.jsx';
+import Personal from './components/Personal';
+import Education from './components/Education';
+import Experience from './components/Experience';
+import Project from './components/Project';
 
 function App() {
   const [userInfo, setUserInfo] = useState({
@@ -26,6 +28,12 @@ function App() {
     city: "College Station, TX",
     startDate: "June 2020",
     endDate: "Present",
+  }])
+
+  const [projects, setProjects] = useState([{
+    project: "Gitlytics",
+    tools: "Python, Flask, React, PostgreSQL, Docker",
+    builtDate: "June 2020",
   }])
 
   const handleInfo = e => {
@@ -61,7 +69,7 @@ function App() {
   const handleExperiences = (e, i) => {
     const {id, value} = e.target;
     let newExperiences = [...experiences];
-    experiences[i][id] = value;
+    newExperiences[i][id] = value;
     setExperiences(newExperiences);
   }
 
@@ -72,7 +80,6 @@ function App() {
       city: "College Station, TX",
       startDate: "2020-06",
       endDate: "Present",
-      description: "Developed a REST API using FastAPI and PostgreSQL to store data from learning management systems. Developed a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data. Explored ways to visualize GitHub collaboration in a classroom setting."
     }])
   }
 
@@ -82,6 +89,27 @@ function App() {
     setExperiences(deleteExperiences);
   }
 
+  const handleProjects = (e, i) => {
+    const {id, value} = e.target;
+    let newProjects = [...projects];
+    newProjects[i][id] = value;
+    setProjects(newProjects);
+  }
+
+  const handleAddProjects = () => {
+    setProjects([...projects, {
+      project: "Gitlytics",
+      tools: "Python, Flask, React, PostgreSQL, Docker",
+      builtDate: "June 2020",
+    }])
+  }
+
+  const handleDeletePro = (i) => {
+    let deleteProjects = [...projects];
+    deleteProjects.splice(i, 1);
+    setProjects(deleteProjects);
+  }
+
   return (
     <>
       <div className="side">
@@ -89,58 +117,8 @@ function App() {
           <div className="box">
             <Personal handleInfo = {handleInfo}/>
             <Education educations={educations} handleAddEducation = {handleAddEducation} handleDeleteEdu = {handleDeleteEdu} handleEducation = {handleEducation}/>
-
-            <div className="title">Experience</div>
-            {experiences.map((e, i) => (
-              <div className="boxed" key = {i}>
-              <form>
-
-                <button className="remove" onClick={() => handleDeleteExp(i)}>Remove Experience</button>
-                <div className="form">
-                  <label htmlFor="position">Position Title</label>
-                  <input type="text" id="position" placeholder="Undergraduate Research Assistant" onChange={e => handleExperiences(e, i)}></input>
-                </div>
-
-                <div className="together2">
-                  <div className="form">
-                    <label htmlFor="employer">Company Name</label>
-                    <input type="text" id="employer" placeholder="Texas A&M University" onChange={e => handleExperiences(e, i)}></input>
-                  </div>
-
-                  <div className="form">
-                    <label htmlFor="city">City Name</label>
-                    <input type="text" id="city" placeholder="College Station, TX" onChange={e => handleExperiences(e, i)}></input>
-                  </div>
-                </div>
-
-                <div className="together2">
-                  <div className="form">
-                    <label htmlFor="startDate">Start Date</label>
-                    <input type="text" id="startDate" placeholder="June 2020" onChange={e => handleExperiences(e, i)}></input>
-                  </div>
-
-                  <div className="form">
-                    <label htmlFor="endDate">End Date</label>
-                    <input type="text" id="endDate" placeholder="Present"onChange={e => handleExperiences(e, i)}></input>
-                  </div>
-                </div>
-
-                <div className="form">
-                    <label htmlFor="task">Job Responsibilities</label>
-                    <div className="tasks">
-                    <input type="text" id="task" placeholder="Developed sum" onChange={e => handleExperiences(e, i)}></input>
-                    <button className="delete">X</button>
-                  </div>
-                </div>
-
-                <button className="job">Add Responsibility</button>
-              </form>
-              </div>
-            ))}
-
-            <div className="centered">
-              <button className="add">Add Experience</button>
-            </div>
+            <Experience experiences={experiences} handleAddExperiences = {handleAddExperiences} handleDeleteExp = {handleDeleteExp} handleExperiences = {handleExperiences}/>
+            <Project projects={projects} handleAddProjects = {handleAddProjects} handleDeletePro = {handleDeletePro} handleProjects = {handleProjects}/>
           </div>
       </div>
 
