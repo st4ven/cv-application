@@ -5,8 +5,8 @@ const Education = ({educations, handleAddEducation, handleDeleteEdu, handleEduca
 
             {educations.map((e, i) => (
               <div className="boxed" key = {i}>
-              <form>
                 <button className="remove" onClick={() => handleDeleteEdu(i)}>Remove Education</button>
+              <form>
 
                 <div className="form">
                   <label htmlFor="degree">Degree Name</label>

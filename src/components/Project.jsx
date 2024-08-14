@@ -5,8 +5,8 @@ const Project = ({projects, handleAddProjects, handleDeletePro, handleProjects})
             
             {projects.map((e, i) => (
               <div className="boxed" key ={i}>
+                <button className="remove" onClick={() => handleDeletePro(i)}>Remove Project</button>
                   <form>
-                    <button className="remove" onClick={() => handleDeletePro(i)}>Remove Project</button>
 
                     <div className="form">
                       <label htmlFor="project">Project Name</label>
