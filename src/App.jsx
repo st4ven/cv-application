@@ -5,42 +5,18 @@ import Education from './components/Education';
 import Experience from './components/Experience';
 import Project from './components/Project';
 import Skill from './components/Skill';
+import Example from './components/Data';
 
 function App() {
-  const [userInfo, setUserInfo] = useState({
-    firstName: "Jake",
-    lastName: "Ryan",
-    phoneNum: "123-456-7890",
-    emailAdd: "jake@su.edu",
-    linkedIn: "linkedin.com/in/jake",
-    githubLink: "github.com/jake",
-  })
+  const [userInfo, setUserInfo] = useState(Example.personal);
 
-  const [educations, setEducations] = useState([{
-    degree: "Bachelor of Arts in Computer Science, Minor in Business",
-    college: "Southwestern University",
-    place: "Georgetown, TX",
-    date: "May 2021",
-  }])
+  const [educations, setEducations] = useState(Example.educations);
 
-  const [experiences, setExperiences] = useState([{
-    position: "Undergraduate Research Assistant",
-    employer: "Texas A&M University",
-    city: "College Station, TX",
-    startDate: "June 2020",
-    endDate: "Present",
-  }])
+  const [experiences, setExperiences] = useState(Example.experiences);
 
-  const [projects, setProjects] = useState([{
-    project: "Gitlytics",
-    tools: "Python, Flask, React, PostgreSQL, Docker",
-    builtDate: "June 2020",
-  }])
+  const [projects, setProjects] = useState(Example.projects);
 
-  const [skills, setSkills] = useState([{
-    skillTitle: "Languages",
-    skill: "Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R"
-  }])
+  const [skills, setSkills] = useState(Example.skills);
 
   const handleInfo = e => {
     const {id, value} = e.target;
@@ -59,10 +35,10 @@ function App() {
 
   const handleAddEducation = () => {
     setEducations([...educations, {
-      degree: "Bachelor of Arts in Computer Science, Minor in Business",
-      college: "Southwestern University",
-      place: "Georgetown, TX",
-      date: "May 2021",
+      degree: "",
+      college: "",
+      place: "", 
+      date: ""
     }])
   }
 
@@ -81,11 +57,12 @@ function App() {
 
   const handleAddExperiences = () => {
     setExperiences([...experiences, {
-      position: "Undergraduate Research Assistant",
-      employer: "Texas A&M University",
-      city: "College Station, TX",
-      startDate: "2020-06",
-      endDate: "Present",
+      position: "",
+      employer: "",
+      city: "",
+      startDate: "",
+      endDate: "",
+      task: ""
     }])
   }
 
@@ -104,9 +81,10 @@ function App() {
 
   const handleAddProjects = () => {
     setProjects([...projects, {
-      project: "Gitlytics",
-      tools: "Python, Flask, React, PostgreSQL, Docker",
-      builtDate: "June 2020",
+      project: "",
+      tools: "",
+      builtDate: "",
+      desc: ""
     }])
   }
 
@@ -125,8 +103,8 @@ function App() {
 
   const handleAddSkills = () => {
     setSkills([...skills, {
-      skillTitle: "Languages",
-      skill: "Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R"
+      skillTitle: "",
+      skill: ""
     }])
   }
 
@@ -136,12 +114,34 @@ function App() {
     setSkills(deleteSkills);
   }
 
+  const clearExample = () => {
+    setUserInfo({
+      firstName: "",
+      lastName: "",
+      phoneNum: "",
+      emailAdd: "",
+      linkedIn: "",
+      githubLink: ""
+    });
+
+    setEducations([]);
+    setExperiences([]);
+    setProjects([]);
+    setSkills([]);
+  }
+
+  const loadExample = () => {
+    setUserInfo(Example.personal);
+    setEducations(Example.educations);
+    setExperiences(Example.experiences);
+    setProjects(Example.projects);
+    setSkills(Example.skills);
+  }
   return (
     <>
       <div className="side">
-          <div className="header">CV Application</div>
           <div className="box">
-            <Personal handleInfo = {handleInfo}/>
+            <Personal handleInfo = {handleInfo} userInfo = {userInfo}/>
             <Education educations={educations} handleAddEducation = {handleAddEducation} handleDeleteEdu = {handleDeleteEdu} handleEducation = {handleEducation}/>
             <Experience experiences={experiences} handleAddExperiences = {handleAddExperiences} handleDeleteExp = {handleDeleteExp} handleExperiences = {handleExperiences}/>
             <Project projects={projects} handleAddProjects = {handleAddProjects} handleDeletePro = {handleDeletePro} handleProjects = {handleProjects}/>
@@ -150,11 +150,116 @@ function App() {
       </div>
 
       <div className="other">
+        <ul className="buttons">
+        <button onClick = {clearExample}>Clear Example</button>
+        <button onClick = {loadExample}>Load Example</button>
+        </ul>
           <div className="paper">
-            <div>{userInfo.firstName}, {userInfo.lastName}, {userInfo.phoneNum}, {userInfo.emailAdd}, {userInfo.linkedIn}, {userInfo.githubLink}</div>
+            <div className="personal-section">
+                <h1>{userInfo.firstName + ' ' + userInfo.lastName}</h1>
+
+                <ul>
+                  <li>{userInfo.phoneNum}</li>
+                  <li>{userInfo.emailAdd}</li>
+                  <li>{userInfo.linkedIn}</li>
+                  <li>{userInfo.githubLink}</li>
+                </ul>
+            </div>
+
+
+            <div className={educations.length > 0 ? "education-section": ''}>
+              <h3>{educations.length > 0 && 'Education'}</h3>
+
+              <ul> 
+                {educations.map((education, index) => (
+                   <li key={index}>
+                    <div>
+                      <strong>{education.college}</strong>
+
+                      {education.place}
+                    </div>
+
+                    <div>
+                        <p>{education.degree}</p>
+
+                        <p>{education.date}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={experiences.length > 0 ? "experience-section": ''}>
+              <h3>{experiences.length > 0 && 'Experience'}</h3>
+
+              <ul>
+                {experiences.map((experience, index) => (
+                  <li key={index}>
+                    <div>
+                      <strong>{experience.position}</strong>
+
+                      <div>{experience.startDate + ' - ' + experience.endDate}</div>
+                    </div>
+
+                    <div>
+                        <p>{experience.employer}</p>
+
+                        <p>{experience.city}</p>
+                    </div>
+
+                    <div>
+                      <ul>
+                        {experience.task.split('\n').map((item, index) => (
+                          <li key = {index}>{'• ' + item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={projects.length > 0 ? "project-section": ''}>
+              <h3>{projects.length > 0 && "Projects"}</h3>
+                <ul> 
+                  {projects.map((project, index) => (
+                    <li key={index}>
+                      <div>
+                        <div>
+                        <strong>{project.project}</strong>
+                        <span>{project.tools}</span>
+                        </div>
+
+                        {project.builtDate}
+                      </div>
+
+                      <div>
+                        <ul>
+                          {project.desc.split('\n').map((item, index) => (
+                            <li key={index}>{'• ' + item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+            </div>
+
+            <div className={skills.length > 0 ? "skills-section": ''}>
+              <h3>{skills.length > 0 && 'Skills'}</h3>
+              <ul>
+                {skills.map((skill, index) => (
+                  <li key={index}>
+                    <strong>{skill.skillTitle + ': '}</strong>
+                    {skill.skill}
+                  </li>
+
+              ))}
+              </ul>
+            </div>
           </div>
 
-          <button className="export">Export to PDF</button>
+          <button onClick={() => alert("Not yet implemented")}className="export">Export to PDF</button>
       </div>
     </>
   )

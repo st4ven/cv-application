@@ -10,12 +10,12 @@ const Skill = ({skills, handleAddSkills, handleDeleteSkills, handleSkills}) => {
                 <form>
                   <div className="form">
                     <label htmlFor="skillTitle">Skills Title</label>
-                    <input type="text" id="skillTitle" placeholder="Languages" onChange={e => handleSkills(e, i)}></input>
+                    <input type="text" id="skillTitle" placeholder="Languages" value = {e.skillTitle} onChange={e => handleSkills(e, i)}></input>
                   </div>
 
                   <div className="form">
                     <label htmlFor="skill">Skills</label>
-                    <input type="text" id="skill" placeholder="Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R" onChange={e => handleSkills(e, i)}></input>
+                    <input type="text" id="skill" placeholder="Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R" value = {e.skill} onChange={e => handleSkills(e, i)}></input>
                   </div>
                 </form>
               </div>

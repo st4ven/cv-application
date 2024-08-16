@@ -10,28 +10,23 @@ const Project = ({projects, handleAddProjects, handleDeletePro, handleProjects})
 
                     <div className="form">
                       <label htmlFor="project">Project Name</label>
-                      <input type="text" id="project" placeholder="Gitlytics" onChange={e => handleProjects(e, i)}></input>
+                      <input type="text" id="project" placeholder="Gitlytics" value = {e.project} onChange={e => handleProjects(e, i)}></input>
                     </div>
 
                     <div className="form">
                     <label htmlFor="tools">Tools/Frameworks Used</label>
-                    <input type="text" id="tools" placeholder="Python, Flask, React, PostgreSQL, Docker" onChange={e => handleProjects(e, i)}></input>
+                    <input type="text" id="tools" placeholder="Python, Flask, React, PostgreSQL, Docker" value = {e.tools} onChange={e => handleProjects(e, i)}></input>
                     </div>
 
                     <div className="form">
                       <label htmlFor="builtDate">Date</label>
-                      <input type="text" id="builtDate" placeholder="June 2020" onChange={e => handleProjects(e, i)}></input>
+                      <input type="text" id="builtDate" placeholder="June 2020" value = {e.builtDate} onChange={e => handleProjects(e, i)}></input>
                     </div>
 
                     <div className="form">
-                      <label htmlFor="desc">Description</label>
-                      <div className="tasks">
-                        <input type="text" id="desc" placeholder="Developed sum"></input>
-                        <button className="delete">X</button>
-                      </div>
+                        <label htmlFor="desc">Description</label>
+                        <textarea id="desc" value = {e.desc} placeholder={"Developed a full-stack web application using with Flask serving a REST API with React as the frontend. \nImplemented GitHub OAuth to get data from user's repositories."} onChange={e => handleProjects(e, i)}></textarea>
                     </div>
-
-                    <button className="job">Add Description</button>
                   </form>
               </div>
               ))}
