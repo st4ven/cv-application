@@ -1,9 +1,7 @@
 #root {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 100vh;
-    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 
 body {

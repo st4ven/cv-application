@@ -10,11 +10,6 @@ ul {
     list-style-type: none;
 }
 .side, .other {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    min-height: 100%;
-    width: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,17 +17,42 @@ ul {
     border: none;
 }
 
+@media (max-width: 969px) {
+    .page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .paper {
+        height: min-content;
+    }
+}
+
+.side {
+    width: 40%;
+    height: 100vh;
+}
+.other {
+    width: 50%;
+    height: auto;
+}
+.page {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 24px;
+    width: 1500px;
+    max-width: 1500px;
+    max-height: none;
+}
 .box {
-    max-height: 100%;
-    max-width: 100%;
-    min-height: 45%;
-    min-width: 70%;
     background-color: #ebebeb;
     border-radius: 12px;
     border: 3px solid #d8d8d8;
 
     text-align: center;
-    margin-bottom: 20px;
 
     padding-left: 10px;
     padding-top: 10px;
@@ -64,21 +84,13 @@ input, textarea {
     text-align: left;
     display: flex;
     flex-direction: row;
-    gap: 110px;
-}
-
-.together2 {
-    gap: 125px;
+    gap: 150px;
+    width: 100%;
 }
 
 .form {
     text-align: left;
     margin-bottom: 20px;
-}
-.header {
-    font-weight: 600;
-    font-size: 45px;
-    margin-bottom: 15px;
 }
 
 .title {
@@ -89,9 +101,9 @@ input, textarea {
 
 .paper {
     min-height: 90%;
-    min-width: 100%;
+    min-width: 90%;
     background-color: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 10px;
     border-radius: 2px solid black;
 }
@@ -143,14 +155,6 @@ input, textarea {
     border: 2px solid rgb(212, 212, 216);
 }
 
-#firstName, #lastName {
-    width: 125%;
-}
-
-#startDate, #endDate, #employer, #city, #place, #date {
-    width: 115%;
-}
-
 textarea {
     resize: none;
     height: 150px;
@@ -164,7 +168,9 @@ textarea {
 
 .export {
     color: white;
-    width: 25%;
+    width: 40%;
+    min-width: 40%;
+    max-width: 50%;
     font-weight: 400;
 }
 
@@ -247,10 +253,9 @@ textarea {
 .buttons {
     margin: 0;
     padding: 0;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
     display: flex;
     gap: 5px;
-    margin-top: 20px;
 }
 
 p {

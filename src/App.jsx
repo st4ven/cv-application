@@ -138,7 +138,7 @@ function App() {
     setSkills(Example.skills);
   }
   return (
-    <>
+    <div className="page">
       <div className="side">
           <div className="box">
             <Personal handleInfo = {handleInfo} userInfo = {userInfo}/>
@@ -261,7 +261,7 @@ function App() {
 
           <button onClick={() => alert("Not yet implemented")}className="export">Export to PDF</button>
       </div>
-    </>
+    </div>
   )
 }
 
