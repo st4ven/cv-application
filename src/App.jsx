@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Project from './components/Project';
 import Skill from './components/Skill';
 import Example from './components/Data';
+import exportPDF from './components/CVExport';
 
 function App() {
   const [userInfo, setUserInfo] = useState(Example.personal);
@@ -259,7 +260,7 @@ function App() {
             </div>
           </div>
 
-          <button onClick={() => alert("Not yet implemented")}className="export">Export to PDF</button>
+          <button onClick={exportPDF}className="export">Export to PDF</button>
       </div>
     </div>
   )

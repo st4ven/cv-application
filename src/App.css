@@ -29,7 +29,6 @@ ul {
         height: min-content;
     }
 }
-
 .side {
     width: 40%;
     height: 100vh;
@@ -223,7 +222,7 @@ textarea {
     li div {
         display: flex;
         justify-content: space-between;
-        font-size: 12px;
+        font-size: 15px;
     }
 }
 
