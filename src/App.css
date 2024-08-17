@@ -222,10 +222,15 @@ textarea {
     li div {
         display: flex;
         justify-content: space-between;
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
+.education-section {
+    li {
+        margin-bottom: 8px;
+    }
+}
 .experience-section, .project-section {
     li div {
         margin-bottom: 2px;
@@ -246,7 +251,7 @@ textarea {
 }
 
 .skills-section {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .buttons {
