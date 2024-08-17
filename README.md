@@ -2,7 +2,7 @@
 
 ## Description
 
-This project builds a CV based on user input. It has four total sections: personal information, education, work experience, personal projects, and technical skills - specifically tailored to computer science students.
+This project builds a CV based on user input. It has five total sections: personal information, education, work experience, personal projects, and technical skills - specifically tailored to computer science students.
 
 ## Features
 * Customizable CV from premade template
