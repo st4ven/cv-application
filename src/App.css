@@ -9,6 +9,7 @@
 ul {
     list-style-type: none;
 }
+
 .side, .other {
     display: flex;
     justify-content: center;
@@ -29,6 +30,7 @@ ul {
         height: min-content;
     }
 }
+
 .side {
     width: 40%;
     height: 100vh;
@@ -37,6 +39,7 @@ ul {
     width: 50%;
     height: auto;
 }
+
 .page {
     display: flex;
     justify-content: center;
@@ -46,6 +49,7 @@ ul {
     max-width: 1500px;
     max-height: none;
 }
+
 .box {
     background-color: #ebebeb;
     border-radius: 12px;
@@ -62,6 +66,7 @@ ul {
 
     display: flex;
     flex-direction: column;
+    margin-top: 70px;
 }
 
 input, textarea {
