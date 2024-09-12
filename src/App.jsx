@@ -247,7 +247,7 @@ function App() {
             </div>
 
             <div className={skills.length > 0 ? "skills-section": ''}>
-              <h3>{skills.length > 0 && 'Skills'}</h3>
+              <h3>{skills.length > 0 && ' Technical Skills'}</h3>
               <ul>
                 {skills.map((skill, index) => (
                   <li key={index}>

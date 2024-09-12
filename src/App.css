@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-* {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    color: black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap');
 
 ul {
     list-style-type: none;
@@ -51,6 +46,8 @@ ul {
 }
 
 .box {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     background-color: #ebebeb;
     border-radius: 12px;
     border: 3px solid #d8d8d8;
@@ -66,10 +63,12 @@ ul {
 
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
+    margin-top: 100px;
 }
 
 input, textarea {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #d8d8d8;
@@ -104,6 +103,7 @@ input, textarea {
 }
 
 .paper {
+    font-family: "Open Sans", 'system-ui';
     min-height: 90%;
     min-width: 90%;
     background-color: white;
@@ -171,6 +171,8 @@ textarea {
 }
 
 .export {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     color: white;
     width: 40%;
     min-width: 40%;
@@ -204,6 +206,7 @@ textarea {
     h1 {
         margin-bottom: 3px;
         margin-top: 0;
+        font-weight: 400;
     }
 }
 
@@ -212,7 +215,8 @@ textarea {
         margin-top: 0;
         border-bottom: 1px solid;
         margin-bottom: 5px;
-        font-size: 20px;
+        font-size: 16.5px;
+        font-weight: 400;
     }
 
     ul {
@@ -227,7 +231,7 @@ textarea {
     li div {
         display: flex;
         justify-content: space-between;
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -256,7 +260,7 @@ textarea {
 }
 
 .skills-section {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .buttons {
@@ -268,7 +272,6 @@ textarea {
 }
 
 p {
-    font-style: italic;
     margin: 0;
 }
 
