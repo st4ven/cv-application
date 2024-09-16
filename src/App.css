@@ -63,7 +63,7 @@ ul {
 
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 input, textarea {
@@ -271,6 +271,9 @@ textarea {
     gap: 5px;
 }
 
+.other button {
+    font-family: 'Inter', sans-serif;
+}
 p {
     margin: 0;
 }
